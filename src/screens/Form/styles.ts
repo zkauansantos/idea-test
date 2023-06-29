@@ -1,19 +1,14 @@
-import SelectDropdown from "react-native-select-dropdown";
 import styled from "styled-components/native";
 
-export const Content = styled.View`
-  flex: 1;
-  background-color: #222;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 24px;
-`;
+import { Platform, StatusBar } from "react-native";
+
+const isIos = Platform.OS === "ios";
 
 export const HeaderContainer = styled.View`
-  height: 73px;
-  margin-top: 24px;
   width: 100%;
+  margin-bottom: 16px;
+  margin-top: ${isIos ? "5%" : `${StatusBar.currentHeight}px`};
+  padding: 0 5%;
 `;
 
 export const Wrapper = styled.View`
@@ -22,10 +17,10 @@ export const Wrapper = styled.View`
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-`
+`;
 
 export const Input = styled.TextInput`
-  padding: 12px;
+  padding: ${isIos ? "3.4%" : "2%"};
   border-radius: 4px;
   min-width: 40%;
   background-color: #333;
@@ -35,14 +30,10 @@ export const Input = styled.TextInput`
 
 export const FormContainer = styled.View`
   width: 100%;
+  padding: 0 5%;
+  gap: 16px;
   flex-direction: column;
-  gap: 32px;
-  margin-bottom: 64px;
   flex: 1;
-`;
-
-export const FooterContainer = styled.View`
-  width: 100%;
-  padding-bottom: 48px;
+  background-color: #222;
 `;
 

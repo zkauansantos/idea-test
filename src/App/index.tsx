@@ -16,7 +16,7 @@ export default function App() {
 
   return (
     <RegisterContextProvider>
-      <StatusBar barStyle='light-content' backgroundColor='#000' translucent />
+      <StatusBar barStyle='light-content' backgroundColor='#222' translucent />
       <StackComponent />
     </RegisterContextProvider>
   );

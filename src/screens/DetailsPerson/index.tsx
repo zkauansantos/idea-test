@@ -1,39 +1,51 @@
 import { useContext } from "react";
-import { Container } from "../../components/Container";
 import { Text } from "../../components/Text";
-import { Content } from "./styles";
+import { ContainerDetails, Content, HeaderContainer } from "./styles";
 import { RegisterContext } from "../../context/RegisterContext";
+import { FlatList } from "react-native";
 
 export default function DetailsPerson() {
   const { person } = useContext(RegisterContext);
 
-  console.log(person);
-
   return (
-    <Container>
-      <Content>
-        <Text weight='700' size={24} color='#fff'>
-          {person[0]?.name}
+    <Content>
+      <HeaderContainer>
+        <Text color='#FFF' weight='600' size={28}>
+          Detalhes
         </Text>
-        <Text weight='700' size={24} color='#fff'>
-          {person[0]?.cpf}
-        </Text>
-        <Text weight='700' size={24} color='#fff'>
-          {person[0]?.email}
-        </Text>
-        <Text weight='700' size={24} color='#fff'>
-          {person[0]?.rg}
-        </Text>
-        <Text weight='700' size={24} color='#fff'>
-          {person[0]?.endereco}
-        </Text>
-        <Text weight='700' size={24} color='#fff'>
-          {person[0]?.genre}
-        </Text>
-        <Text weight='700' size={24} color='#fff'>
-          {person[0]?.number}
-        </Text>
-      </Content>
-    </Container>
+      </HeaderContainer>
+
+      <ContainerDetails>
+        <FlatList
+          data={person}
+          keyExtractor={(person, i) => `${person} - ${i}`}
+          renderItem={({ item: person }) => {
+            console.log(person);
+            return (
+              <>
+                <Text color='#FFF' weight='600'>
+                  {person.name}
+                </Text>
+                <Text color='#FFF' weight='600'>
+                  {person.cpf}
+                </Text>
+                <Text color='#FFF' weight='600'>
+                  {person.email}
+                </Text>
+                <Text color='#FFF' weight='600'>
+                  {person.genre}
+                </Text>
+                <Text color='#FFF' weight='600'>
+                  {person.phone}
+                </Text>
+                <Text color='#FFF' weight='600'>
+                  {person.rg}
+                </Text>
+              </>
+            );
+          }}
+        />
+      </ContainerDetails>
+    </Content>
   );
 }

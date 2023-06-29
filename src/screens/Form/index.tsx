@@ -1,15 +1,8 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-import {
-  Content,
-  FooterContainer,
-  FormContainer,
-  HeaderContainer,
-  Input,
-  Wrapper,
-} from "./styles";
+import { FormContainer, HeaderContainer, Wrapper } from "./styles";
 
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Text } from "../../components/Text";
 import { Container } from "../../components/Container";
 import Button from "../../components/Button";
@@ -18,17 +11,32 @@ import Field from "../../components/Field";
 import { StackTypes } from "../../routes/Stack";
 import { useContext } from "react";
 import { RegisterContext } from "../../context/RegisterContext";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 interface RouteParams {
   personType: string;
 }
+
+const schemaYup = yup.object({
+  name: yup.string().required("Campo obrigatório"),
+  email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
+  cpf: yup.string().required("Campo obrigatório"),
+  rg: yup.string().required("Campo obrigatório"),
+  genre: yup.string().required("Campo obrigatório"),
+  endereco: yup.string().required("Campo obrigatório"),
+  phone: yup.number().required("Campo obrigatório"),
+});
 
 export default function FormScreen() {
   const {
     control,
     formState: { errors },
     handleSubmit,
-  } = useForm({});
+    reset,
+  } = useForm<any>({
+    resolver: yupResolver(schemaYup),
+  });
   const route = useRoute();
   const navigate = useNavigation<StackTypes>();
   const { registerPerson } = useContext(RegisterContext);
@@ -38,49 +46,63 @@ export default function FormScreen() {
     registerPerson(data);
 
     navigate.navigate("DetailsPerson");
+    reset();
   };
 
   const { personType } = route.params as RouteParams;
 
   return (
     <Container>
-      <Content>
-        <HeaderContainer>
-          <Text weight='700' color='#FFF' size={28}>
-            Cadastrar
-          </Text>
-        </HeaderContainer>
+      <HeaderContainer>
+        <Text weight='700' color='#FFF' size={28}>
+          Cadastrar
+        </Text>
+      </HeaderContainer>
 
-        <FormContainer>
-          <Field control={control} name='name' placeholder='Nome' />
+      <FormContainer>
+        <Field
+          control={control}
+          name='name'
+          errors={errors}
+          placeholder='Nome'
+        />
 
-          <Field control={control} name='email' placeholder='E-mail' />
+        <Field
+          control={control}
+          name='email'
+          errors={errors}
+          placeholder='E-mail'
+        />
 
-          <Field control={control} name='cpf' placeholder='CPF' />
+        <Field control={control} name='cpf' errors={errors} placeholder='CPF' />
 
-          <Wrapper>
-            <Field control={control} name='rg' placeholder='RG' />
+        <Wrapper>
+          <Field control={control} name='rg' errors={errors} placeholder='RG' />
 
-            <Controller
-              control={control}
-              name='genre'
-              render={({ field: { onChange } }) => (
-                <Select onSelect={onChange} />
-              )}
-            />
-          </Wrapper>
+          <Select
+            control={control}
+            name='genre'
+            errors={errors}
+            defaultButtonText='Gênero'
+          />
+        </Wrapper>
 
-          <Field control={control} name='endereco' placeholder='Endereço' />
+        <Field
+          control={control}
+          name='endereco'
+          errors={errors}
+          placeholder='Endereço'
+        />
 
-          <Field control={control} name='number' placeholder='Telefone' />
+        <Field
+          control={control}
+          name='phone'
+          errors={errors}
+          placeholder='Telefone'
+        />
+      </FormContainer>
 
-          <Field control={control} name='number' placeholder='Telefone' />
-        </FormContainer>
-
-        <FooterContainer>
-          <Button onPress={handleSubmit(handleRegister)}>Cadastrar</Button>
-        </FooterContainer>
-      </Content>
+      <Button onPress={handleSubmit(handleRegister)}>Cadastrar</Button>
     </Container>
   );
 }
