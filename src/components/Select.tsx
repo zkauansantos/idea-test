@@ -1,7 +1,7 @@
-import { View, Text } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 import { AntDesign } from "@expo/vector-icons";
-const countries = ["Masculino", "Feminino", "Prefiro não informar"];
+
+const genres = ["Masculino", "Feminino", "Prefiro não informar"];
 
 interface SelectProps {
   onSelect(event: any): void;
@@ -10,7 +10,7 @@ interface SelectProps {
 export default function Select({ onSelect }: SelectProps) {
   return (
     <SelectDropdown
-      data={countries}
+      data={genres}
       onSelect={onSelect}
       defaultButtonText='Genêro'
       renderDropdownIcon={() => (
@@ -33,6 +33,7 @@ export default function Select({ onSelect }: SelectProps) {
       }}
       dropdownStyle={{
         backgroundColor: "#333",
+        borderColor: '#333'
       }}
       rowTextStyle={{
         color: '#fff'

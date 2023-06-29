@@ -12,7 +12,7 @@ export const Content = styled.View`
 
 export const HeaderContainer = styled.View`
   height: 73px;
-  margin-top: 48px;
+  margin-top: 24px;
   width: 100%;
 `;
 

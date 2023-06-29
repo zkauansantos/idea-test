@@ -1,9 +1,9 @@
 import { StatusBar } from "react-native";
 import StackComponent from "../routes/Stack";
 import { useFonts } from "expo-font";
+import RegisterContextProvider from "../context/RegisterContext";
 
 export default function App() {
-
   const [isFonstLoaded] = useFonts({
     "GeneralSans-400": require("../../assets/fonts/GeneralSans-Regular.otf"),
     "GeneralSans-600": require("../../assets/fonts/GeneralSans-Semibold.otf"),
@@ -15,13 +15,9 @@ export default function App() {
   }
 
   return (
-    <>
-      <StatusBar
-        barStyle='light-content'
-        backgroundColor='#000'
-        translucent
-      />
+    <RegisterContextProvider>
+      <StatusBar barStyle='light-content' backgroundColor='#000' translucent />
       <StackComponent />
-    </>
+    </RegisterContextProvider>
   );
 }

@@ -1,4 +1,4 @@
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import {
   Content,
@@ -10,11 +10,14 @@ import {
 } from "./styles";
 
 import { Controller, useForm } from "react-hook-form";
-
 import { Text } from "../../components/Text";
 import { Container } from "../../components/Container";
 import Button from "../../components/Button";
 import Select from "../../components/Select";
+import Field from "../../components/Field";
+import { StackTypes } from "../../routes/Stack";
+import { useContext } from "react";
+import { RegisterContext } from "../../context/RegisterContext";
 
 interface RouteParams {
   personType: string;
@@ -27,13 +30,17 @@ export default function FormScreen() {
     handleSubmit,
   } = useForm({});
   const route = useRoute();
- 
+  const navigate = useNavigation<StackTypes>();
+  const { registerPerson } = useContext(RegisterContext);
+
   const handleRegister = (data: any) => {
     console.log(data);
+    registerPerson(data);
+
+    navigate.navigate("DetailsPerson");
   };
 
   const { personType } = route.params as RouteParams;
-
 
   return (
     <Container>
@@ -45,102 +52,29 @@ export default function FormScreen() {
         </HeaderContainer>
 
         <FormContainer>
-          <Controller
-            control={control}
-            name='name'
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                onChangeText={onChange}
-                onBlur={onBlur}
-                value={value}
-                placeholder='Seu nome'
-                placeholderTextColor='#555'
-              />
-            )}
-          />
+          <Field control={control} name='name' placeholder='Nome' />
 
-          <Controller
-            control={control}
-            name='email'
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                onChangeText={onChange}
-                onBlur={onBlur}
-                value={value}
-                placeholder='Seu email'
-                placeholderTextColor='#555'
-              />
-            )}
-          />
+          <Field control={control} name='email' placeholder='E-mail' />
 
-          <Controller
-            control={control}
-            name='cpf'
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                onChangeText={onChange}
-                onBlur={onBlur}
-                value={value}
-                placeholder='CPF'
-                keyboardType="number-pad"
-                placeholderTextColor='#555'
-              />
-            )}
-          />
+          <Field control={control} name='cpf' placeholder='CPF' />
 
           <Wrapper>
-            <Controller
-              control={control}
-              name='rg'
-              render={({ field: { onChange, onBlur, value } }) => (
-                <Input
-                  onChangeText={onChange}
-                  onBlur={onBlur}
-                  value={value}
-                  placeholder='RG'
-                  placeholderTextColor='#555'
-                />
-              )}
-            />
+            <Field control={control} name='rg' placeholder='RG' />
 
             <Controller
               control={control}
               name='genre'
-              render={({ field: { onChange, onBlur, value } }) => (
+              render={({ field: { onChange } }) => (
                 <Select onSelect={onChange} />
               )}
             />
           </Wrapper>
 
-          <Controller
-            control={control}
-            name='enredeco'
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                onChangeText={onChange}
-                onBlur={onBlur}
-                value={value}
-                placeholder='Endereço'
-                placeholderTextColor='#555'
-              />
-            )}
-          />
+          <Field control={control} name='endereco' placeholder='Endereço' />
 
-          <Controller
-            control={control}
-            name='phone'
-            render={({ field: { onChange, onBlur, value } }) => (
-              <Input
-                onChangeText={onChange}
-                onBlur={onBlur}
-                value={value}
-                placeholder='Telefone'
-                keyboardType="number-pad"
-                placeholderTextColor='#555'
-                secureTextEntry
-              />
-            )}
-          />
+          <Field control={control} name='number' placeholder='Telefone' />
+
+          <Field control={control} name='number' placeholder='Telefone' />
         </FormContainer>
 
         <FooterContainer>
