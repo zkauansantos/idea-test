@@ -53,6 +53,7 @@ export const DocumentImage = styled(Image)`
 export const ContainerDocImage = styled(View)`
   align-items: center;
   justify-content: center;
+  padding-bottom: 15%;
 `;
 
 export const ButtonFinish = styled(TouchableOpacity)`

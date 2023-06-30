@@ -41,7 +41,13 @@ export default function StackComponent() {
 				<Stack.Screen name="PersonType" component={PersonTypeScreen} />
 				<Stack.Screen name="Form" component={Form} />
 				<Stack.Screen name="DetailsPerson" component={DetailsPerson} />
-				<Stack.Screen name="Finish" component={Finish} />
+				<Stack.Screen
+					name="Finish"
+					component={Finish}
+					options={{
+						headerShown: false,
+					}}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

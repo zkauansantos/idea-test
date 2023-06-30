@@ -14,6 +14,10 @@ import { FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackTypes } from '../../routes/Stack';
 
+type TranslationType = {
+  [key: string]: string;
+};
+
 export default function DetailsPerson() {
 	const { person, setPerson } = useContext(RegisterContext);
 	const navigator = useNavigation<StackTypes>();
@@ -22,7 +26,7 @@ export default function DetailsPerson() {
 		return () => setPerson([]);
 	}, []);
 
-	const translation = {
+	const translation: TranslationType = {
 		name: 'Nome',
 		email: 'E-mail',
 		cpf: 'CPF',
