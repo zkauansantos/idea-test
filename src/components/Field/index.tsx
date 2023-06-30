@@ -32,12 +32,14 @@ export default function Field({
 						value={value}
 						placeholder={placeholder}
 						placeholderTextColor="#555"
-						keyboardType={number && 'numeric'}
+						keyboardType={number ? 'numeric' : 'default'}
 						maxLength={maxLength}
 					/>
 				)}
 			/>
-			{!!errors[name] && <ErrorFeedback>{errors[name]?.message}</ErrorFeedback>}
+			{!!errors[name] && (
+				<ErrorFeedback>{errors[name]?.message?.toString()}</ErrorFeedback>
+			)}
 		</FieldContainer>
 	);
 }

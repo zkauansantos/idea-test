@@ -30,9 +30,9 @@ export default function Select({
 						onSelect={onChange}
 						defaultButtonText={defaultButtonText}
 						renderDropdownIcon={() => (
-							<AntDesign name='caretdown' size={16} color='#555' />
+							<AntDesign name="caretdown" size={16} color="#555" />
 						)}
-						dropdownIconPosition='left'
+						dropdownIconPosition="left"
 						buttonStyle={{
 							backgroundColor: '#333',
 							padding: 0,
@@ -61,7 +61,9 @@ export default function Select({
 					/>
 				)}
 			/>
-			{!!errors[name] && <ErrorFeedback>{errors[name]?.message}</ErrorFeedback>}
+			{!!errors[name] && (
+				<ErrorFeedback>{errors[name]?.message?.toString()}</ErrorFeedback>
+			)}
 		</SelectContainer>
 	);
 }

@@ -15,10 +15,10 @@ export default function HomeScreen() {
 	return (
 		<Content>
 			<View>
-				<Text style={{ marginBottom: 4 }} weight='700' color='#FFF' size={24}>
+				<Text style={{ marginBottom: 4 }} weight="700" size={24}>
           Bem-vindo ao RegistralApp
 				</Text>
-				<Text color='#FFF' weight='400' opacity={0.6}>
+				<Text weight="400" opacity={0.6}>
           Aqui, você pode realizar o cadastro de pessoas físicas e jurídicas de
           forma fácil e segura.
 				</Text>

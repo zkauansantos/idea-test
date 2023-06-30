@@ -5,9 +5,10 @@ import {
 } from '@react-navigation/native-stack';
 
 import HomeScreen from '../screens/Home';
-import Form from '../screens/Form';
 import PersonTypeScreen from '../screens/PersonTypeScreen';
+import Form from '../screens/Form';
 import DetailsPerson from '../screens/DetailsPerson';
+import Finish from '../screens/Finish';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,7 +16,8 @@ type StackNavigation = {
   Home: undefined;
   PersonType: undefined;
   Form: { personType: string };
-  DetailsPerson: { uriDocumentImage: string };
+  DetailsPerson: undefined;
+  Finish: undefined;
 };
 
 export type StackTypes = NativeStackNavigationProp<StackNavigation>;
@@ -39,6 +41,7 @@ export default function StackComponent() {
 				<Stack.Screen name="PersonType" component={PersonTypeScreen} />
 				<Stack.Screen name="Form" component={Form} />
 				<Stack.Screen name="DetailsPerson" component={DetailsPerson} />
+				<Stack.Screen name="Finish" component={Finish} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

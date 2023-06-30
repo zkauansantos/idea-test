@@ -9,7 +9,7 @@ interface ButtonProps {
 export default function Button({ children, onPress }: ButtonProps) {
 	return (
 		<ButtonContainer onPress={onPress}>
-			<Text weight="600" color="#fff">
+			<Text weight="600" >
 				{children}
 			</Text>
 		</ButtonContainer>

@@ -1,6 +1,7 @@
-import styled from 'styled-components/native';
+import { View } from 'react-native';
+import styled from 'styled-components';
 
-export const Wrapper = styled.View`
+export const Wrapper = styled(View)`
   max-width: 100%;
   flex-direction: row;
   align-items: center;

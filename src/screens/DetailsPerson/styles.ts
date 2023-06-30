@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-import { Image, Platform, StatusBar, View } from 'react-native';
+import {
+	Image,
+	Platform,
+	StatusBar,
+	TouchableOpacity,
+	View,
+} from 'react-native';
 
 const isIos = Platform.OS === 'ios';
 
@@ -17,12 +23,15 @@ export const ContainerDetails = styled(View)`
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
-  padding: 5%;
+  padding: 5% 5% 30%;
 `;
 
 export const HeaderContainer = styled(View)`
   width: 100%;
+  flex-direction: column;
   margin-bottom: 4px;
+  gap: 16px;
+  align-items: center;
   margin-top: ${isIos ? '5%' : `${StatusBar.currentHeight}px`};
   padding: 0 5%;
 `;
@@ -36,7 +45,19 @@ export const FieldDetail = styled(View)`
 `;
 
 export const DocumentImage = styled(Image)`
-  width: 120px;
-  height: 96px;
+  width: 100%;
+  height: 300px;
   border-radius: 8px;
+`;
+
+export const ContainerDocImage = styled(View)`
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ButtonFinish = styled(TouchableOpacity)`
+  background-color: #7c3aed;
+  width: 70%;
+  align-items: center;
+  padding: 10px;
 `;

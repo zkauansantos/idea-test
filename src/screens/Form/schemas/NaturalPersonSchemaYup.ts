@@ -19,6 +19,7 @@ export const NaturalPersonSchemaYup = yup.object().shape({
 		.number()
 		.typeError('Apenas números são aceitos')
 		.required('Campo obrigatório'),
+	document: yup.string().required('Campo obrigatório'),
 });
 
 export type NaturalPersonData = yup.InferType<typeof NaturalPersonSchemaYup>;

@@ -6,12 +6,14 @@ interface TextProps {
   color?: string;
   size?: number;
   opacity?: number;
+  align?: string;
 }
 
 export const Text = styled(TextRN)<TextProps>`
   font-family: ${({ weight }) =>
 		weight ? `GeneralSans-${weight}` : 'GeneralSans-400'};
-  color: ${({ color }) => color || '#333'};
+  color: ${({ color }) => color || '#FFF'};
   font-size: ${({ size }) => (size ? `${size}px` : '16px')};
   opacity: ${({ opacity }) => opacity || 1};
+  text-align: ${({ align }) => (align ? align : 'start')};
 `;

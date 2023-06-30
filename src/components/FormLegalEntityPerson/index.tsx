@@ -49,6 +49,7 @@ export default function FormLegalEntityPerson({
 				name="address"
 				errors={errors}
 				placeholder="Endereço"
+				maxLength={50}
 			/>
 
 			<Field

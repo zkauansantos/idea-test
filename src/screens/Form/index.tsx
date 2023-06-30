@@ -3,7 +3,6 @@ import { Platform, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import useForm from './useForm';
 
-
 import { Text } from '../../components/Text';
 import { ErrorFeedback } from '../../components/ErrorFeedBack';
 import FormNaturalPerson from '../../components/FormNaturalPerson';
@@ -17,13 +16,13 @@ import {
 	FormContainer,
 	HeaderContainer,
 } from './styles';
+import { Controller } from 'react-hook-form';
 
 export default function FormScreen() {
 	const {
 		control,
 		errors,
 		personType,
-		errorImageRequired,
 		handleSubmit,
 		handleRegister,
 		handleUserDocumentPhotoSelect,
@@ -33,7 +32,7 @@ export default function FormScreen() {
 		<>
 			<Container behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
 				<HeaderContainer>
-					<Text weight="700" color="#FFF" size={28}>
+					<Text weight="700" size={28}>
             Cadastro {personType}
 					</Text>
 				</HeaderContainer>
@@ -47,13 +46,25 @@ export default function FormScreen() {
 					)}
 
 					<View>
-						<ButtonSendImageDocument onPress={handleUserDocumentPhotoSelect}>
-							<Text color="#fff">Enviar documento</Text>
-							<AntDesign name="camerao" size={22} color="#999" />
-						</ButtonSendImageDocument>
-						{errorImageRequired && (
-							<ErrorFeedback>Campo obrigatório</ErrorFeedback>
-						)}
+						<Controller
+							control={control}
+							name="document"
+							render={() => (
+								<>
+									<ButtonSendImageDocument
+										onPress={handleUserDocumentPhotoSelect}
+									>
+										<Text>Enviar documento</Text>
+										<AntDesign name="camerao" size={22} color="#999" />
+									</ButtonSendImageDocument>
+									{!!errors?.document && (
+										<ErrorFeedback>
+											{errors.document.message?.toString()}
+										</ErrorFeedback>
+									)}
+								</>
+							)}
+						/>
 					</View>
 				</FormContainer>
 

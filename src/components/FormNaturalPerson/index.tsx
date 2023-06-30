@@ -53,6 +53,7 @@ export default function NaturalPerson({ control, errors }: NaturalPersonProps) {
 				name="address"
 				errors={errors}
 				placeholder="Endereço"
+				maxLength={50}
 			/>
 
 			<Field

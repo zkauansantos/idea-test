@@ -25,6 +25,7 @@ export const LegalEntityPersonSchemaYup = yup.object().shape({
 			test: (value) => cpf.isValid(value),
 			message: 'CPF do representante inválido',
 		}),
+	document: yup.string().required('Campo obrigatório'),
 });
 
 export type LegalEntityData = yup.InferType<typeof LegalEntityPersonSchemaYup>;

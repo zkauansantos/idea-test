@@ -8,6 +8,7 @@ export default function useValidateForm<T extends FieldValues>(schema: any) {
 		handleSubmit,
 		formState,
 		reset,
+		trigger,
 		control,
 		setValue,
 	}: UseFormReturn<T> = useForm({
@@ -23,6 +24,7 @@ export default function useValidateForm<T extends FieldValues>(schema: any) {
 		reset,
 		control,
 		formState,
+		trigger,
 		isSubmitting,
 		isLoading,
 		setValue,
