@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
 export const Content = styled.View`
   flex: 1;
@@ -15,5 +15,5 @@ export const BoxButtons = styled.View`
   width: 100%;
   flex-direction: column;
   gap: 16px;
-`
+`;
 

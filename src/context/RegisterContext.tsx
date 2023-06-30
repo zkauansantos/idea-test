@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react';
 
 interface RegisterContextProviderProps {
   children: React.ReactNode;
@@ -7,6 +7,7 @@ interface RegisterContextProviderProps {
 type RegisterContextData = {
   person: any[];
   registerPerson: (person: PersonPF | PersonPJ) => void;
+  setPerson: (v: any) => void
 };
 export const RegisterContext = createContext({} as RegisterContextData);
 
@@ -30,17 +31,17 @@ type PersonPJ = {
 };
 
 export default function RegisterContextProvider({
-  children,
+	children,
 }: RegisterContextProviderProps) {
-  const [person, setPerson] = useState<any[]>([]);
+	const [person, setPerson] = useState<any[]>([]);
 
-  function registerPerson(person: PersonPF | PersonPJ) {
-    setPerson((prev) => [...prev, person]);
-  }
+	function registerPerson(person: PersonPF | PersonPJ) {
+		setPerson((prev) => [...prev, person]);
+	}
 
-  return (
-    <RegisterContext.Provider value={{ person, registerPerson }}>
-      {children}
-    </RegisterContext.Provider>
-  );
+	return (
+		<RegisterContext.Provider value={{ person, registerPerson, setPerson }}>
+			{children}
+		</RegisterContext.Provider>
+	);
 }

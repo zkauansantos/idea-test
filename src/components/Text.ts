@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { Text as TextRN } from "react-native";
+import styled from 'styled-components';
+import { Text as TextRN } from 'react-native';
 
 interface TextProps {
-  weight?: "400" | "600" | "700";
+  weight?: '400' | '600' | '700';
   color?: string;
   size?: number;
   opacity?: number;
@@ -10,8 +10,8 @@ interface TextProps {
 
 export const Text = styled(TextRN)<TextProps>`
   font-family: ${({ weight }) =>
-    weight ? `GeneralSans-${weight}` : "GeneralSans-400"};
-  color: ${({ color }) => color || "#333"};
-  font-size: ${({ size }) => (size ? `${size}px` : "16px")};
+		weight ? `GeneralSans-${weight}` : 'GeneralSans-400'};
+  color: ${({ color }) => color || '#333'};
+  font-size: ${({ size }) => (size ? `${size}px` : '16px')};
   opacity: ${({ opacity }) => opacity || 1};
 `;

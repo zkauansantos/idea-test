@@ -1,8 +1,8 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 
-import { Platform, StatusBar } from "react-native";
+import { Platform, StatusBar } from 'react-native';
 
-const isIos = Platform.OS === "ios";
+const isIos = Platform.OS === 'ios';
 
 export const Container = styled.KeyboardAvoidingView`
   flex: 1;
@@ -12,7 +12,7 @@ export const Container = styled.KeyboardAvoidingView`
 export const HeaderContainer = styled.View`
   width: 100%;
   margin-bottom: 16px;
-  margin-top: ${isIos ? "5%" : `${StatusBar.currentHeight}px`};
+  margin-top: ${isIos ? '5%' : `${StatusBar.currentHeight}px`};
   padding: 0 5%;
 `;
 
@@ -28,4 +28,12 @@ export const FormContainer = styled.View`
 export const FooterContainer = styled.View`
   width: 100%;
   padding: 10% 5%;
+`;
+
+export const ButtonSendImageDocument = styled.TouchableOpacity`
+  width: 100%;
+  padding: 12px;
+  background-color: #555;
+  flex-direction: row;
+  justify-content: space-between;
 `;

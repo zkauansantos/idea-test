@@ -1,6 +1,5 @@
-import { ActivityIndicator } from "react-native";
-import { Text } from "../Text";
-import { ButtonContainer } from "./styles";
+import { Text } from '../Text';
+import { ButtonContainer } from './styles';
 
 interface ButtonProps {
   children: string;
@@ -8,11 +7,11 @@ interface ButtonProps {
 }
 
 export default function Button({ children, onPress }: ButtonProps) {
-  return (
-    <ButtonContainer onPress={onPress}>
-      <Text weight='600' color='#fff'>
-        {children}
-      </Text>
-    </ButtonContainer>
-  );
+	return (
+		<ButtonContainer onPress={onPress}>
+			<Text weight="600" color="#fff">
+				{children}
+			</Text>
+		</ButtonContainer>
+	);
 }

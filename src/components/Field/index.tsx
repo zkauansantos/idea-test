@@ -1,7 +1,7 @@
-import { Control, Controller, FieldErrors, FieldValues } from "react-hook-form";
-import { Input } from "./styles";
-import { FieldContainer } from "./styles";
-import { ErrorFeedback } from "../ErrorFeedBack";
+import { Control, Controller, FieldErrors, FieldValues } from 'react-hook-form';
+import { Input } from './styles';
+import { FieldContainer } from './styles';
+import { ErrorFeedback } from '../ErrorFeedBack';
 
 interface FieldProps {
   control: Control<FieldValues, any>;
@@ -13,31 +13,31 @@ interface FieldProps {
 }
 
 export default function Field({
-  control,
-  name,
-  placeholder,
-  errors,
-  number,
-  maxLength = 200,
+	control,
+	name,
+	placeholder,
+	errors,
+	number,
+	maxLength = 200,
 }: FieldProps) {
-  return (
-    <FieldContainer>
-      <Controller
-        control={control}
-        name={name}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            onChangeText={onChange}
-            onBlur={onBlur}
-            value={value}
-            placeholder={placeholder}
-            placeholderTextColor='#555'
-            keyboardType={number && "numeric"}
-            maxLength={maxLength}
-          />
-        )}
-      />
-      {!!errors[name] && <ErrorFeedback>{errors[name]?.message}</ErrorFeedback>}
-    </FieldContainer>
-  );
+	return (
+		<FieldContainer>
+			<Controller
+				control={control}
+				name={name}
+				render={({ field: { onChange, onBlur, value } }) => (
+					<Input
+						onChangeText={onChange}
+						onBlur={onBlur}
+						value={value}
+						placeholder={placeholder}
+						placeholderTextColor="#555"
+						keyboardType={number && 'numeric'}
+						maxLength={maxLength}
+					/>
+				)}
+			/>
+			{!!errors[name] && <ErrorFeedback>{errors[name]?.message}</ErrorFeedback>}
+		</FieldContainer>
+	);
 }
