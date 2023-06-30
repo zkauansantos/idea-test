@@ -4,7 +4,6 @@ import { FieldValues } from 'react-hook-form/dist/types';
 
 export default function useValidateForm<T extends FieldValues>(schema: any) {
 	const {
-		register,
 		handleSubmit,
 		formState,
 		reset,
@@ -15,18 +14,14 @@ export default function useValidateForm<T extends FieldValues>(schema: any) {
 		resolver: yupResolver(schema),
 	});
 
-	const { errors, isSubmitting, isLoading } = formState;
+	const { errors } = formState;
 
 	return {
-		register,
-		handleSubmit,
 		errors,
-		reset,
 		control,
-		formState,
+		reset,
+		handleSubmit,
 		trigger,
-		isSubmitting,
-		isLoading,
 		setValue,
 	};
 }

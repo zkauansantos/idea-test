@@ -56,7 +56,6 @@ export default function DetailsPerson() {
 					data={person}
 					keyExtractor={(person, i) => `${person} - ${i}`}
 					renderItem={({ item: person }) => {
-						console.log(person);
 						return (
 							<>
 								{Object.keys(person).map((key) => {
