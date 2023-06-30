@@ -4,28 +4,16 @@ import { Platform, StatusBar } from "react-native";
 
 const isIos = Platform.OS === "ios";
 
+export const Container = styled.KeyboardAvoidingView`
+  flex: 1;
+  background: #222;
+`;
+
 export const HeaderContainer = styled.View`
   width: 100%;
   margin-bottom: 16px;
   margin-top: ${isIos ? "5%" : `${StatusBar.currentHeight}px`};
   padding: 0 5%;
-`;
-
-export const Wrapper = styled.View`
-  max-width: 100%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-`;
-
-export const Input = styled.TextInput`
-  padding: ${isIos ? "3.4%" : "2%"};
-  border-radius: 4px;
-  min-width: 40%;
-  background-color: #333;
-  border: 1px solid #666;
-  color: #fff;
 `;
 
 export const FormContainer = styled.View`
@@ -37,3 +25,7 @@ export const FormContainer = styled.View`
   background-color: #222;
 `;
 
+export const FooterContainer = styled.View`
+  width: 100%;
+  padding: 10% 5%;
+`;

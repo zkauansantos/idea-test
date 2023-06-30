@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 
+
 export const Content = styled.View`
   flex: 1;
   background-color: #222;
@@ -9,3 +10,4 @@ export const Content = styled.View`
   text-align: center;
   padding: 0 32px;
 `;
+

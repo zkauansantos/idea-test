@@ -31,7 +31,7 @@ export default function StackComponent() {
             backgroundColor: "#222",
           },
           headerBackVisible: true,
-          statusBarColor: '#222'
+          statusBarColor: "#222",
         }}
         initialRouteName='Home'
       >
